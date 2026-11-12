@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>HVV-Erreichbarkeit</title>
+  <meta name="description" content="Welche S- und U-Bahn-Stationen in Hamburg sind ab einer Uhrzeit in 30 Minuten erreichbar?">
+  <meta name="theme-color" content="#1d2a4d">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside id="panel" class="collapsed">
+    <button id="handle" class="handle" type="button" aria-label="Liste ein- oder ausklappen"><span></span></button>
+    <header>
+      <h1>S- &amp; U-Bahn Hamburg</h1>
+      <p class="sub">Was ist in <span id="budgetLabel">30</span> Minuten erreichbar?</p>
+    </header>
+
+    <section class="controls">
+      <label>Datum
+        <input type="date" id="date">
+      </label>
+      <label>Abfahrt ab
+        <input type="time" id="time" step="60">
+      </label>
+      <label>Minuten
+        <input type="number" id="budget" min="1" max="180" value="30" inputmode="numeric">
+      </label>
+      <label class="wide">Startstation
+        <input type="search" id="search" list="stationList" placeholder="Name eingeben oder auf der Karte tippen" autocomplete="off" enterkeyhint="search">
+        <datalist id="stationList"></datalist>
+      </label>
+    </section>
+
+    <div id="warning" class="warning" hidden></div>
+
+    <section id="result">
+      <p class="hint">Lade Fahrplandaten …</p>
+    </section>
+
+    <footer>
+      <div class="legend">
+        <span>0</span><div class="ramp"></div><span id="rampMax">30 min</span>
+      </div>
+      <p id="source" class="source"></p>
+    </footer>
+  </aside>
+  <main id="map"></main>
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="engine.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

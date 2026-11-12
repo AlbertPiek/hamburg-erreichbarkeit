@@ -1,0 +1,6 @@
+flask>=3.0
+pandas>=2.2
+numpy>=1.26
+requests>=2.31
+charset_normalizer>=3.0
+pytest>=8.0
